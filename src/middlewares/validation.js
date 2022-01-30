@@ -1,4 +1,5 @@
 const Joi = require('joi')
+const { ClientError } = require('../utils/error.js')
 
 const annoValidation = Joi.object({
     phoneNumber: Joi.string().pattern(new RegExp(/^998[3789][012345789][0-9]{7}$/)).required(),
@@ -27,7 +28,7 @@ const announcementValidation = (req, res, next) => {
         }
         
         let { link } = req.body
-        if( !(link.startsWith('https://')) ) throw new Error('This link is not secure!')
+        if( !(link.startsWith('https://')) ) throw new ClientError(400,'This link is not secure!')
         
         return next()
     } catch(error) {
