@@ -20,7 +20,7 @@ const announcementValidation = (req, res, next) => {
     try {
         const { value, error } = annoValidation.validate(req.body)
         
-        if (error) return next(error)
+        if (error) throw new ClientError(400, error)
     
         let { imgUrl, personImgUrl } = req.files
         if( !(['image/jpg', 'image/jpeg', 'image/png'].includes(imgUrl.mimetype)) || !(['image/jpg', 'image/jpeg', 'image/png'].includes(personImgUrl.mimetype)) ) {

@@ -20,21 +20,21 @@ const GET = (req, res, next) => {
 			const announcement = announcements.find(announcement => announcement.ID == postId)
 			return res.json(announcement)
 		} else {
-			const paginatedUsers = announcements.slice(page * limit - limit, limit * page)
 			const acceptedUser = announcements.filter(announcement => {
-				if(announcement.result == 'accepted'){
-					delete announcement.phoneNumber
+				if(announcement.result == 'padding'){
+					// delete announcement.phoneNumber
 					delete announcement.eventname
-					delete announcement.info
+					// delete announcement.info
 					delete announcement.messId
-					delete announcement.link
+					// delete announcement.link
 					delete announcement.result
 					announcement.time = timeConverter(announcement.time)
 					return announcement
 				}
-			})
-
-			return res.json({users:acceptedUser ,cart:categoriya})
+			})	
+			acceptedUser.sort((a,b) =>  a.time.filter - b.time.filter)
+			const paginatedUsers = acceptedUser.slice(page * limit - limit, limit * page)
+			return res.json({users:paginatedUsers ,cart:categoriya})
 		}
 
 	} catch(error) {
@@ -50,7 +50,7 @@ const POST = (req, res, next) => {
 		const announcements = req.select('announcements')
 
 		const prolilimg = personImgUrl.name.replace(/\s/g, '')
-		personImgUrl.mv( path.join(process.cwd(), 'files', 'profilimg', d.getTime() + prolilimg) )
+		personImgUrl.mv( path.join(process.cwd(), 'files', 'profilImg', d.getTime() + prolilimg) )
 
 		const imageName = imgUrl.name.replace(/\s/g, '')
 		imgUrl.mv( path.join(process.cwd(), 'files','img', d.getTime() + imageName) )

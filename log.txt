@@ -9,3 +9,6 @@
 2022-01-25 | 23:10  GET  /announcements  "Internal Server Error: ENOENT: no such file or directory, open '/home/sarvar/Рабочий стол/loyha/backend/src/database/categoriya.json'"
 2022-01-25 | 23:11  GET  /announcements  "Cannot set headers after they are sent to the client"
 
+[object Object]  POST  /add  ""phoneNumber" with value "9989020" fails to match the required pattern: /^998[3789][012345789][0-9]{7}$/"
+[object Object]  POST  /add  "undefined: ValidationError: "phoneNumber" with value "9989020" fails to match the required pattern: /^998[3789][012345789][0-9]{7}$/"
+[object Object]  POST  /add  "undefined: ValidationError: "phoneNumber" with value "9989020" fails to match the required pattern: /^998[3789][012345789][0-9]{7}$/"

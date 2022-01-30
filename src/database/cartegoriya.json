@@ -1,24 +1,45 @@
 {
-    "All":[1],
     "IT":[
         "Frondend",
         "Backend",
         "Mobile Developer",
-        "Devops"
+        "Devops",
+        "Dizayn",
+        "SMM"
     ],
     "Bussines":[
         "Credit and about",
-        "Managment"
+        "Managment",
+        "Ko`p pul topish",
+        "Hisob kitob"
     ],
     "Education":[
         "Physics",
-        "Math"
+        "Math",
+        "English",
+        "History"
     ],
     "Oddiy":[
         "Ona tili",
-        "adabiyot"
+        "adabiyot",
+        "Geografiya"
+    ],
+    "Qurilish":[
+        "Bino inshootlar",
+        "Hovli",
+        "Arxitektura",
+        "Hisoblash"
+    ],
+    "Sog'liqni saqlash":[
+        "Stomotologiya",
+        "Uralogiya",
+        "Tramatologiya"
+    ],
+    "Ekologiya":[
+        "Atrof muhit",
+        "Ekskursiya",
+        "Tozalik"
     ]
-
 }
     
     

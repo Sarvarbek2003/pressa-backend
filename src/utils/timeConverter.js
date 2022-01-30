@@ -9,7 +9,8 @@ module.exports = (time) => {
 		"month": month,
 		"date": date,
 		"hour": hour,
-		"minute": minute
+		"minute": minute,
+		"filter": year+month+date+hour+minute
 	}
 }
 
