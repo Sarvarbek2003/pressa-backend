@@ -8,3 +8,4 @@
 2022-01-25 | 23:10  GET  /announcements  "Internal Server Error: ENOENT: no such file or directory, open '/home/sarvar/Рабочий стол/loyha/backend/src/database/categoriya.json'"
 2022-01-25 | 23:10  GET  /announcements  "Internal Server Error: ENOENT: no such file or directory, open '/home/sarvar/Рабочий стол/loyha/backend/src/database/categoriya.json'"
 2022-01-25 | 23:11  GET  /announcements  "Cannot set headers after they are sent to the client"
+

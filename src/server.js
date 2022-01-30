@@ -1,4 +1,5 @@
 const { ServerError } = require('./utils/error.js')
+const fileUpload = require('express-fileupload')
 const timeConverter = require('./utils/timeConverter.js')
 const { PORT } = require('../config.js')
 const express = require('express')
@@ -11,6 +12,8 @@ const modelMiddleware = require('./middlewares/model.js')
 const paginationMiddleware = require('./middlewares/pagination.js')
 const validation = require('./middlewares/validation.js')
 
+
+app.use(fileUpload())
 app.use(cors({
   	origin: "*",
   	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -27,7 +30,7 @@ const addAnnouncements = require('./controllers/announcements.js')
 const authRouter = require('./routes/auth.js')
 
 
-app.post('/add',validation.announcementValidation,addAnnouncements.POST)
+app.post('/add', validation.announcementValidation, addAnnouncements.POST)
 app.use('/announcements', announcementsRouter)
 app.use('/admin/auth', authRouter)
 
@@ -45,15 +48,25 @@ app.use((error, req, res, next) => {
 })
 
 
-function ValidateEmail(mail) 
-{
- if (/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(mail))
-  {
-    return (true)
-  }
-    return (false)
+const axios = require('axios')
+
+
+async function sal(){
+	let options = {
+		method: 'POST',
+		url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage',
+		
+		data:{
+			chat_id: '1228852253',
+			text: '1228852253'
+		}
+		
+	};
+	let res = await axios.request(options)
 }
 
-console.log(timeConverter('2021-12-31T10:00'))
 
+setInterval(async() => {
+	// await sal()
+}, 500);
 app.listen(PORT, () => console.log('server is running on http://localhost:' + PORT))

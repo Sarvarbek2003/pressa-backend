@@ -1,6 +1,10 @@
 const timeConverter = require('../utils/timeConverter.js')
+const axios = require('axios')
+
+const path = require('path')
 const { ClientError } = require('../utils/error.js')
 let d = new Date()
+
 
 
 const GET = (req, res, next) => {
@@ -40,54 +44,53 @@ const GET = (req, res, next) => {
 
 const POST = (req, res, next) => {
 	try {
-		const { img, profilImg} = req.files
-		const { name, surname, phoneNumber, kartegoriya, supkartegoriya, title, type, link, info, yonalish, email, date} = req.body
+		const { imgUrl, personImgUrl} = req.files
+		const { name, phoneNumber, kartegoriya, online, supkartegoriya, title, link, info, yonalish, email, date, time} = req.body
 
 		const announcements = req.select('announcements')
 
-		const prolilimg = profilImg.name.replace(/\s/g, '')
-		files.mv( path.join(process.cwd(), 'files', 'profilimg', d.getTime() + prolilimg) )
+		const prolilimg = personImgUrl.name.replace(/\s/g, '')
+		personImgUrl.mv( path.join(process.cwd(), 'files', 'profilimg', d.getTime() + prolilimg) )
 
-		const imageName = img.name.replace(/\s/g, '')
-		files.mv( path.join(process.cwd(), 'files','img', d.getTime() + imageName) )
+		const imageName = imgUrl.name.replace(/\s/g, '')
+		imgUrl.mv( path.join(process.cwd(), 'files','img', d.getTime() + imageName) )
 
 		let ID = announcements.length ? announcements[announcements.length - 1].ID + 1 : 1
+		let timeDate = date + 'T' + time
 
 		let newAnnouncement = {
 			ID,
-			type,
 			name,
-			surname,
 			yonalish,
 			email,
 			phoneNumber,
-			date,
+			time: new Date(timeDate),
 			kartegoriya,
 			supkartegoriya,
 			link,
 			imgUrl: '/img/' + d.getTime() + imageName,
-			profilImg: '/profilImg/' + d.getTime() + prolilimg,
+			personImgUrl: '/profilImg/' + d.getTime() + prolilimg,
 			title,
-			info
+			info,
+			messId: 0,
+			view: 0,
+			online,
+			result: "padding"
 		}
-
-		let template = []
 		
-		users.push(newUser)
+		announcements.push(newAnnouncement)
 
-		req.insert('users', users)
-		req.postmessage(useId, template)
-
+		req.insert('announcements', announcements)
+		
 		res.status(201).json({
-			userId: newUser.userId,
-			message: "The user successfully registered!",
-			token: jwt.sign({ userId: newUser.userId, agent: req['headers']['user-agent'] }, 'SECRET_KEY', { expiresIn: '10h' })
+			message: "Accepted please wait for confirmation!!",
 		})
-
+		
 	} catch(error) {
 		return next(error)
 	}
 }
+
 
 
 module.exports = {
