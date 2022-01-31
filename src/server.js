@@ -11,11 +11,12 @@ const app = express()
 const modelMiddleware = require('./middlewares/model.js')
 const paginationMiddleware = require('./middlewares/pagination.js')
 const validation = require('./middlewares/validation.js')
+const controller = require('./controllers/auth.js')
 
 
 app.use(fileUpload())
 app.use(cors({
-  	origin: "*",
+	origin: "*",
   	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   	preflightContinue: false
 }))
@@ -32,7 +33,7 @@ const authRouter = require('./routes/auth.js')
 
 app.post('/add', validation.announcementValidation, addAnnouncements.POST)
 app.use('/announcements', announcementsRouter)
-app.use('/admin/auth', authRouter)
+app.use('/auth', authRouter)
 
 app.use((error, req, res, next) => {
 	if([400, 401, 404, 413, 415].includes(error.status)) {
@@ -64,6 +65,7 @@ async function sal(){
 	};
 	let res = await axios.request(options)
 }
+
 
 
 setInterval(async() => {

@@ -12,7 +12,7 @@ class ClientError extends Error {
 	constructor(status, message) {
 		super()
 		this.status = status
-		this.message = http.STATUS_CODES[status] + ": " + message
+		this.message =  message
 	}
 }
 
@@ -21,3 +21,5 @@ module.exports = {
 	ClientError,
 	ServerError
 }
+
+//http.STATUS_CODES[status] + ": " +
