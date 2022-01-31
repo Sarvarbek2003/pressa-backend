@@ -39,10 +39,10 @@ app.use((error, req, res, next) => {
 	if([400, 401, 404, 413, 415].includes(error.status)) {
 		return res.status(error.status).send(error)
 	} 
-	
+	let { year, month, date, hour, minute } = timeConverter(new Date())
 	fs.appendFileSync(
 		path.join(process.cwd(), 'log.txt'),
-		`${timeConverter(new Date())}  ${req.method}  ${req.url}  "${error.message}"\n`
+		`${date+'/'+month+'/'+year+' | '+hour+':'+minute}  ${req.method}  ${req.url}  "${error.message}"\n`
 	)
 
 	return res.status(500).send(new ServerError(""))

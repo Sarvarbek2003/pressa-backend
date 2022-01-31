@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken')
+const { ClientError } = require('../utils/error.js')
+
 
 module.exports = (req, res, next) => {
 	try {
 		const { adminId, agent } = jwt.verify(req.headers.token, 'PRESSA')
 
 		if(req['headers']['user-agent'] != agent) {
-			throw new Error("Token is sent from wrong device!")
+			throw new ClientError(401, "Token is sent from wrong device!")
 		}
 
 		req.adminId = adminId
@@ -13,6 +15,6 @@ module.exports = (req, res, next) => {
 		return next()
 
 	} catch(error) {
-		res.status(401).json({ message: error.message })
+		return next(error)
 	}
 }
