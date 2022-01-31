@@ -34,7 +34,6 @@ const GET = (req, res, next) => {
 			})
 			acceptedUser.sort((a,b) =>  a.time.filter - b.time.filter)
 			const paginatedUsers = acceptedUser.slice(page * limit - limit, limit * page)
-			console.log(paginatedUsers)	
 			return res.json({users:paginatedUsers ,cart:categoriya})
 		}
 
