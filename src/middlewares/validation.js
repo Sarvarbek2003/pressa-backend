@@ -14,6 +14,7 @@ const annoValidation = Joi.object({
     online: Joi.string().max(200).required(),
     yonalish: Joi.string().max(200).required(),
     link: Joi.string().max(200).required(),
+    description: Joi.string().max(200).required()
 })
 
 const announcementValidation = (req, res, next) => {

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const { ClientError } = require('../utils/error.js')
 
 
-module.exports = (req, res, next) => {
+module.exports = (req, res, next) => { 
 	try {
 		const { adminId, agent } = jwt.verify(req.headers.token, 'PRESSA')
 
@@ -15,6 +15,6 @@ module.exports = (req, res, next) => {
 		return next()
 
 	} catch(error) {
-		return next(error)
+		return res.status(401).json({message: 'Invalig token'})
 	}
 }

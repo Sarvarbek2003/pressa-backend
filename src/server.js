@@ -27,13 +27,18 @@ app.use(paginationMiddleware)
 app.use(express.static(path.join(process.cwd(), 'files')))
 
 const announcementsRouter = require('./routes/announcements.js')
-const addAnnouncements = require('./controllers/announcements.js')
+const adminRout = require('./routes/admin.js')
 const authRouter = require('./routes/auth.js')
 
+const addAnnouncements = require('./controllers/announcements.js')
 
-app.post('/add', validation.announcementValidation, addAnnouncements.POST)
+
+app.post('/add', addAnnouncements.POST)
 app.use('/announcements', announcementsRouter)
 app.use('/auth', authRouter)
+app.use('/admin', adminRout)
+
+
 
 app.use((error, req, res, next) => {
 	if([400, 401, 404, 413, 415].includes(error.status)) {
@@ -54,6 +59,7 @@ const axios = require('axios')
 
 async function sal(){
 	let options = {
+		
 		method: 'POST',
 		url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage',
 		
