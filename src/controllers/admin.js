@@ -2,7 +2,7 @@ const  timeConverter  = require("../utils/timeConverter")
 
 const PUT = async(req, res, next) => {
     try{
-        const  { ID, result } = req.body
+        const  { ID, result} = req.body
 
         if(!ID && !reult) return
 

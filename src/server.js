@@ -34,6 +34,9 @@ const addAnnouncements = require('./controllers/announcements.js')
 
 
 app.post('/add', addAnnouncements.POST)
+app.post('/view', addAnnouncements.PUT)
+
+
 app.use('/announcements', announcementsRouter)
 app.use('/auth', authRouter)
 app.use('/admin', adminRout)

@@ -1,11 +1,24 @@
 const timeConverter = require('../utils/timeConverter.js')
 const axios = require('axios')
-
 const path = require('path')
 const { ClientError } = require('../utils/error.js')
+
 let d = new Date()
+let timeNow = timeConverter(Date())
 
-
+async function delet(req){
+	let announcements = req.select('announcements')
+	announcements.forEach( el => {
+		let tim = timeConverter(el.time)
+		if(+timeNow.filter > +tim.filter) {
+				let index = announcements.indexOf(el)
+				req.unlinkfunc(announcements[index].imgUrl)
+				req.unlinkfunc(announcements[index].personImgUrl)
+				announcements.splice(index, 1)
+			}
+		});
+	req.insert('announcements', announcements)
+}
 
 const GET = (req, res, next) => {
 	try {
@@ -22,10 +35,7 @@ const GET = (req, res, next) => {
 		} else {
 			const acceptedUser = announcements.filter(announcement => {
 				if(announcement.result == 'accepted'){
-					delete announcement.phoneNumber
-					delete announcement.info
 					delete announcement.messId
-					delete announcement.link
 					delete announcement.result
 					announcement.time = timeConverter(announcement.time)
 					return announcement
@@ -33,9 +43,11 @@ const GET = (req, res, next) => {
 			})
 			acceptedUser.sort((a,b) =>  a.time.filter - b.time.filter)
 			const paginatedUsers = acceptedUser.slice(page * limit - limit, limit * page)
-			 res.json({users:paginatedUsers ,cart:categoriya})
+			res.json({announs:paginatedUsers ,cart:categoriya})
 		}
-
+		setTimeout(() => {
+			delet(req)
+		}, 2000);
 	} catch(error) {
 		return next(error)
 	}
@@ -64,7 +76,7 @@ const DAT = (req, res, next) => {
 const POST = async(req, res, next) => {
 	try {
 		const { imgUrl, personImgUrl} = req.files
-		const { name, phoneNumber, kartegoriya, online, supkartegoriya, title, descripion, link, info, direction, email, date, time} = req.body
+		const { name, phoneNumber, category, online, subcategory, title, descripion, link, info, direction, email, date, time} = req.body
 
 		const announcements = req.select('announcements')
 
@@ -84,8 +96,8 @@ const POST = async(req, res, next) => {
 			email,
 			phoneNumber,
 			time: new Date(timeDate),
-			kartegoriya,
-			supkartegoriya,
+			category,
+			subcategory,
 			link,
 			imgUrl: '/img/' + d.getTime() + imageName,
 			personImgUrl: '/profilImg/' + d.getTime() + prolilimg,
@@ -95,31 +107,10 @@ const POST = async(req, res, next) => {
 			messId: 0,
 			view: 0,
 			online,
-			result: "accepted"
+			result: "pending"
 		}
 
-		let tgPost = `
-🎯Yangi elon keldi
-
-✈️${newAnnouncement.title}
-
-📑${newAnnouncement.descripion}
-
-📞 +${newAnnouncement.phoneNumber}
-https://`
-		
-		let options = {
-			method: 'GET',
-			url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage',
-			
-			data:{
-				chat_id: '1228852253',
-				text: tgPost
-			}
-			
-		};
-		let mesaId = await axios.request(options)
-		
+		axios.get
 
 		announcements.push(newAnnouncement)
 
@@ -134,9 +125,31 @@ https://`
 	}
 }
 
-module.exports = {
-	GET,
-	POST,
-	DAT,
+const PUT = async(req, res, next) => {
+    try{
+        const  { postId } = req.body
+		console.log(postId)
+        if(!postId) return
 
+        let announcements = req.select('announcements')
+
+        announcements.forEach(el => {
+            if(+el.ID == +postId) {
+                el.view += 1
+            }
+        })
+
+        await req.insert('announcements',announcements)
+
+        res.status(200).json({messag: 'OK'})
+    }catch (error){
+        return next(error)
+    }
+}
+
+module.exports = {
+	POST,
+	GET,
+	DAT,
+	PUT
 }

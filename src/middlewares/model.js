@@ -21,6 +21,15 @@ const model = (req, res, next) => {
 			return next( new ServerError(error.message) )
 		}
 	}
+
+	req.unlinkfunc = function (fileName) {
+		try {
+			fs.unlinkSync(path.join(process.cwd(), 'files', fileName))
+			return true
+		} catch(error) {
+			return next( new ServerError(error.message) )
+		}
+	}
 	return next()
 }
 
