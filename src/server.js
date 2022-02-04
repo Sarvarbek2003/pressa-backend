@@ -34,7 +34,7 @@ const addAnnouncements = require('./controllers/announcements.js')
 
 
 app.post('/add', addAnnouncements.POST)
-app.post('/view', addAnnouncements.PUT)
+app.put('/views', addAnnouncements.PUT)
 
 
 app.use('/announcements', announcementsRouter)

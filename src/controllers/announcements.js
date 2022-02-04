@@ -128,8 +128,8 @@ const POST = async(req, res, next) => {
 const PUT = async(req, res, next) => {
     try{
         const  { postId } = req.body
-		console.log(postId)
-        if(!postId) return
+
+		if(!postId) return
 
         let announcements = req.select('announcements')
 
