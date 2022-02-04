@@ -76,7 +76,6 @@ async function sal(){
 }
 
 
-
 setInterval(async() => {
 	// await sal()
 }, 500);
