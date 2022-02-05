@@ -113,7 +113,7 @@ const POST = async(req, res, next) => {
 
         let POST = `
 🎯 Yangi elon keldi
-
+ 
 ✈️ ${newAnnouncement.title}
 
 📑 ${newAnnouncement.descripion}
@@ -130,7 +130,7 @@ const POST = async(req, res, next) => {
                 parse_mode: 'HTML'
             }
         }
-        let res = await axios.request(options)
+        await axios.request(options)
         
 
 		announcements.push(newAnnouncement)
