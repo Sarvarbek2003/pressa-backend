@@ -110,7 +110,28 @@ const POST = async(req, res, next) => {
 			result: "pending"
 		}
 
-		axios.get
+
+        let POST = `
+🎯 Yangi elon keldi
+
+✈️ ${newAnnouncement.title}
+
+📑 ${newAnnouncement.descripion}
+
+👉 <a href="https://pressauz.herokuapp.com/announcement/${newAnnouncement.ID}">BATAFSIL</a>
+        `
+        let options = {
+            method: 'GET',
+            url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendPhoto',
+            data:{
+                chat_id: '887528138',
+                photo: 'https://pressa-uz.herokuapp.com' + imgUrl,
+                caption: POST,
+                parse_mode: 'HTML'
+            }
+        }
+        let res = await axios.request(options)
+        return res.data.result.message_id  
 
 		announcements.push(newAnnouncement)
 

@@ -75,6 +75,11 @@ async function sal(){
 	let res = await axios.request(options)
 }
 
+// setInterval(async() => {
+// 	let ress = await axios.get('https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage?chat_id=-1001763280116&text=thtfhtf')
+// 	console.log(ress)
+// }, 1000);
+
 
 setInterval(async() => {
 	// await sal()

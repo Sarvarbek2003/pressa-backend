@@ -15,7 +15,7 @@
         "title": "Lorem ipsum dolor,",
         "info": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur alias, omnis, consectetur corporis expedita doloribus numquam quaerat ullam id maxime quo, sapiente rem nemo repellat ipsam quis distinctio ipsa cumque!",
         "messId": 0,
-        "view": 1,
+        "view": 2,
         "online": "true",
         "result": "accepted"
     },
@@ -37,7 +37,7 @@
         "messId": 0,
         "view": 1,
         "online": "true",
-        "result": "accepted"
+        "result": "pending"
     },
     {
         "ID": 3,
@@ -57,7 +57,7 @@
         "messId": 0,
         "view": 0,
         "online": "false",
-        "result": "accepted"
+        "result": "pending"
     },
     {
         "ID": 4,
@@ -77,7 +77,7 @@
         "messId": 0,
         "view": 0,
         "online": "true",
-        "result": "rejected"
+        "result": "pending"
     },
     {
         "ID": 5,
@@ -97,7 +97,7 @@
         "messId": 0,
         "view": 0,
         "online": "false",
-        "result": "rejected"
+        "result": "pending"
     },
     {
         "ID": 6,
@@ -117,6 +117,6 @@
         "messId": 0,
         "view": 0,
         "online": "true",
-        "result": "accepted"
+        "result": "pending"
     }
 ]

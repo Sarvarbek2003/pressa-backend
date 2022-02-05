@@ -3,3 +3,7 @@
 04/02/2022 | 04:32  POST  /add  "Cannot read properties of undefined (reading 'name')"
 04/02/2022 | 04:32  POST  /add  "Cannot read properties of undefined (reading 'name')"
 04/02/2022 | 04:33  POST  /add  "Cannot read properties of undefined (reading 'name')"
+05/02/2022 | 10:19  PUT  /admin/update  "el is not defined"
+05/02/2022 | 10:20  PUT  /admin/update  "el is not defined"
+05/02/2022 | 11:01  GET  /admin/data  "Internal Server Error: Unexpected token , in JSON at position 2839"
+05/02/2022 | 11:02  GET  /admin/data  "Internal Server Error: Unexpected token , in JSON at position 1826"
