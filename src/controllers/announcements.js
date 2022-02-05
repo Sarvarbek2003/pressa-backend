@@ -76,7 +76,7 @@ const DAT = (req, res, next) => {
 const POST = async(req, res, next) => {
 	try {
 		const { imgUrl, personImgUrl} = req.files
-		const { name, phoneNumber, category, online, subcategory, title, descripion, link, info, direction, email, date, time} = req.body
+		const { name, phoneNumber, category, online, subcategory, title, description, link, info, direction, email, date, time} = req.body
 
 		const announcements = req.select('announcements')
 
@@ -101,7 +101,7 @@ const POST = async(req, res, next) => {
 			link,
 			imgUrl: '/img/' + d.getTime() + imageName,
 			personImgUrl: '/profilImg/' + d.getTime() + prolilimg,
-			descripion,
+			description,
 			title,
 			info,
 			messId: 0,
@@ -110,28 +110,6 @@ const POST = async(req, res, next) => {
 			result: "pending"
 		}
 
-
-//         let POST = `
-// 🎯 Yangi elon keldi
- 
-// ✈️ ${newAnnouncement.title}
-
-// 📑 ${newAnnouncement.descripion}
-
-// 👉 <a href="https://pressauz.herokuapp.com/announcement/${newAnnouncement.ID}">BATAFSIL</a>
-//         `
-//         let options = {
-//             method: 'GET',
-//             url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendPhoto',
-//             data:{
-//                 chat_id: '887528138',
-//                 photo: 'https://pressa-uz.herokuapp.com' + imgUrl,
-//                 caption: POST,
-//                 parse_mode: 'HTML'
-//             }
-//         }
-//         await axios.request(options)
-        
 
 		announcements.push(newAnnouncement)
 

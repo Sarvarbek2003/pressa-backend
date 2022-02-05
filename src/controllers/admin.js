@@ -59,7 +59,7 @@ async function botSend(obj) {
 
 ✈️ ${title}
 
-📑 ${descripion}
+📑 ${description}
 
 👉 <a href="https://pressauz.herokuapp.com/announcement/${ID}">BATAFSIL</a>
         `
