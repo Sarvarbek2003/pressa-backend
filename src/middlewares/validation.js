@@ -12,7 +12,7 @@ const annoValidation = Joi.object({
     title: Joi.string().max(40).required(),
     info: Joi.string().max(200).required(),
     online: Joi.string().max(200).required(),
-    descripion: Joi.string().max(200).required(),
+    direction: Joi.string().max(200).required(),
     link: Joi.string().max(200).required(),
     description: Joi.string().max(200).required()
 })
