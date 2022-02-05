@@ -111,26 +111,26 @@ const POST = async(req, res, next) => {
 		}
 
 
-        let POST = `
-🎯 Yangi elon keldi
+//         let POST = `
+// 🎯 Yangi elon keldi
  
-✈️ ${newAnnouncement.title}
+// ✈️ ${newAnnouncement.title}
 
-📑 ${newAnnouncement.descripion}
+// 📑 ${newAnnouncement.descripion}
 
-👉 <a href="https://pressauz.herokuapp.com/announcement/${newAnnouncement.ID}">BATAFSIL</a>
-        `
-        let options = {
-            method: 'GET',
-            url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendPhoto',
-            data:{
-                chat_id: '887528138',
-                photo: 'https://pressa-uz.herokuapp.com' + imgUrl,
-                caption: POST,
-                parse_mode: 'HTML'
-            }
-        }
-        await axios.request(options)
+// 👉 <a href="https://pressauz.herokuapp.com/announcement/${newAnnouncement.ID}">BATAFSIL</a>
+//         `
+//         let options = {
+//             method: 'GET',
+//             url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendPhoto',
+//             data:{
+//                 chat_id: '887528138',
+//                 photo: 'https://pressa-uz.herokuapp.com' + imgUrl,
+//                 caption: POST,
+//                 parse_mode: 'HTML'
+//             }
+//         }
+//         await axios.request(options)
         
 
 		announcements.push(newAnnouncement)
