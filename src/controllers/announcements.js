@@ -131,7 +131,7 @@ const POST = async(req, res, next) => {
             }
         }
         let res = await axios.request(options)
-        return res.data.result.message_id  
+        
 
 		announcements.push(newAnnouncement)
 
