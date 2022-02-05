@@ -33,7 +33,7 @@ const authRouter = require('./routes/auth.js')
 const addAnnouncements = require('./controllers/announcements.js')
 
 
-app.post('/add', addAnnouncements.POST)
+app.post('/add',validation.announcementValidation, addAnnouncements.POST)
 app.put('/views', addAnnouncements.PUT)
 
 
@@ -56,29 +56,6 @@ app.use((error, req, res, next) => {
 	return res.status(500).send(new ServerError(""))
 })
 
-
-const axios = require('axios')
-
-
-async function sal(){
-	let options = {
-		
-		method: 'POST',
-		url: 'https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage',
-		
-		data:{
-			chat_id: '1228852253',
-			text: '1228852253'
-		}
-		
-	};
-	let res = await axios.request(options)
-}
-
-// setInterval(async() => {
-// 	let ress = await axios.get('https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage?chat_id=-1001763280116&text=thtfhtf')
-// 	console.log(ress)
-// }, 1000);
 
 
 setInterval(async() => {
